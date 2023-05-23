@@ -10,7 +10,6 @@ import axios from "axios";
 
 
 
-
 function App() {
 
 
@@ -20,6 +19,7 @@ function App() {
       <ContainerCard />
 
       <Header />
+      <Home />
 
     </>
 

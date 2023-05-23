@@ -1,21 +1,21 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import Tarjeta from './Tarjeta';
+import Tarjeta from "./Tarjeta";
 
-import { Grid } from '@mui/material';
+import { Grid } from "@mui/material";
 
 function ContainerCard() {
     const [characters, setCharacters] = useState([]);
-    console.log("Hola")
+    console.log("Hola");
     useEffect(() => {
-        axios.get("https://api.themoviedb.org/3/movie/11?api_key=175670c6abdd8ecaf1c0dbdcfa8d3f44")
+        axios
+            .get(
+                "https://api.themoviedb.org/3/discover/movie?api_key=175670c6abdd8ecaf1c0dbdcfa8d3f44"
+            )
             .then((data) => {
-                console.log(data)
-                setCharacters(data.data.results)
-            }
-            );
-
+                setCharacters(data.data.results);
+            });
     }, []);
 
     return (
@@ -26,27 +26,23 @@ function ContainerCard() {
             justifyContent="space-around"
             alignItems="center"
         >
-            {characters ?
-                characters.map((elem) => (
-                    < Grid
-                        key={elem.genres.id}
+            {characters
+                ? characters.map((elem) => (
+                    <Grid
+                        key={elem.id}
                         item
                         xs={4}
                         style={{ display: "flex", justifyContent: "center" }}
                     >
                         <Tarjeta
                             name={elem.original_title}
-
                             image={elem.poster_path}
                             descripcion={elem.overview}
                         />
                     </Grid>
-
                 ))
-                : " error"
-            }
-
-        </Grid >
+                : " error"}
+        </Grid>
     );
 }
 export default ContainerCard;

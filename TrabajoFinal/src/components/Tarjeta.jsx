@@ -10,7 +10,11 @@ import {
 export default function Tarjeta({ name, descripcion, image }) {
     return (
         <Card sx={{ width: 345, marginBottom: "20px" }} raised>
-            <CardMedia sx={{ height: 350 }} image={image} title="green iguana" />
+            <CardMedia
+                sx={{ height: 350 }}
+                image={`https://image.tmdb.org/t/p/w500${image}`}
+                https:title="green iguana"
+            />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
                     {name}
@@ -26,4 +30,6 @@ export default function Tarjeta({ name, descripcion, image }) {
         </Card>
     );
 }
+
+
 
