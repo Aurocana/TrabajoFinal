@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import MovieProvider from "./context/Movie";
 import Home from "./components/Home";
 import Busqueda from "./components/Busqueda";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/Busqueda" element={<Busqueda />} />
           <Route path="/movies/:id" element={<MovieDetail />} />
         </Routes>
+        <Footer />
       </Router>
     </MovieProvider>
   );

@@ -58,6 +58,7 @@ function MovieDetail() {
         videoId={trailerId}
         onClose={() => setIsOpen(false)}
       />
+
       <div className="movie-detail-content">
         <div className="movie-detail-poster">
           <img
@@ -68,10 +69,22 @@ function MovieDetail() {
         <div className="movie-detail-info">
           <h2>{movie.original_title}</h2>
           <p>{movie.overview}</p>
-          <p>Popularidad: {movie.popularity}</p>
-          {trailerId && (
-            <button onClick={() => setIsOpen(true)}>Ver tráiler</button>
-          )}
+          <div className="d-flex justify-content-between align-items-center">
+            <div>
+              <p>Generos:</p>
+              <ul>
+                {movie.genres.length > 0 &&
+                  movie.genres.map((genre) => (
+                    <li key={genre.id}>{genre.name}</li>
+                  ))}
+              </ul>
+            </div>
+            {trailerId && (
+              <button className="btn btn-light" onClick={() => setIsOpen(true)}>
+                Ver tráiler
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@ import { useState } from "react";
 
 function ContainerCard({ tipo }) {
   const { movies, pagina, setPagina } = useContext(MovieContext);
-  
+
   const getMovies = () => {
     switch (tipo) {
       case "popular":
@@ -23,22 +23,28 @@ function ContainerCard({ tipo }) {
   const peliculas = getMovies();
 
   return (
-    <Grid
-      container
-      paddingTop={"5rem"}
-      direction="row"
-      justifyContent="space-around"
-      alignItems="center"
-    >
-      {peliculas
-        ? peliculas.map((elem) => <TarjetaPelicula elem={elem} key={elem.id} />)
-        : " error"}
-      <Pagination
-        count={10} // Este valor depende de cuántas páginas quieres que se muestren. Podría ser dinámico dependiendo de la respuesta de la API.
-        page={pagina}
-        onChange={(event, value) => setPagina(value)}
-      />
-    </Grid>
+    <>
+      <Grid
+        container
+        paddingTop={"5rem"}
+        direction="row"
+        justifyContent="space-around"
+        alignItems="center"
+      >
+        {peliculas
+          ? peliculas.map((elem) => (
+              <TarjetaPelicula elem={elem} key={elem.id} />
+            ))
+          : " error"}
+      </Grid>
+      <Grid container justifyContent="center" alignItems="center" margin={3}>
+        <Pagination
+          count={10}
+          page={pagina}
+          onChange={(event, value) => setPagina(value)}
+        />
+      </Grid>
+    </>
   );
 }
 export default ContainerCard;

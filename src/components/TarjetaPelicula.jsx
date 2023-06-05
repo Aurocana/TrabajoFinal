@@ -16,9 +16,9 @@ function TarjetaPelicula({ elem }) {
       key={elem.id}
       item
       xs={12}
-      sm={6}
-      md={4}
-      lg={3}
+      sm={10}
+      md={6}
+      lg={4}
       style={{ display: "flex", justifyContent: "center" }}
     >
       <Link to={movieDetailUrl} style={{ textDecoration: "none" }}>
